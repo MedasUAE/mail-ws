@@ -7,15 +7,17 @@ function sendEmail(reqBody, next) {
             from:config.from, // sender address
             to:config.to, // list of receivers
             subject: reqBody.subject, // Subject line
-            html:"Hi Sujit, you got message from "+reqBody.fromName+"\n"+
-            "Email Id  "+reqBody.fromEmail+"\n"+
-              reqBody.message// plain text body
+            html:"Hi,\n You have got message from "+reqBody.fromName+"\n"+
+            "Email Id: "+reqBody.fromEmail+"\n"+
+            reqBody.message// plain text body
         }; 
   
     var transporter = nodemailer.createTransport({
-        service: config.service,
+        host: config.host,
+        port: config.port,
+        secure: false,
         auth: {
-            user: config.from,// sender address
+            user: config.username, // sender address
             pass: config.pass
         }
     });
