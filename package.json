@@ -10,8 +10,8 @@
   "author": "Medas",
   "license": "ISC",
   "dependencies": {
-    "nodemailer": "^4.6.8",
-    "restify": "^6.3.2",
-    "restify-cors-middleware": "^1.0.1"
+    "nodemailer": "4.6.8",
+    "restify": "6.3.2",
+    "restify-cors-middleware": "1.0.1"
   }
 }
