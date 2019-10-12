@@ -12,6 +12,7 @@
   "dependencies": {
     "nodemailer": "4.6.8",
     "restify": "6.3.2",
-    "restify-cors-middleware": "1.0.1"
+    "restify-cors-middleware": "1.0.1",
+    "winston": "3.2.1"
   }
 }

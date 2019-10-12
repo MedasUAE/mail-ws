@@ -2,6 +2,7 @@ var restify = require('restify');
 var plugins = require('restify').plugins;
 const corsMiddleware = require('restify-cors-middleware')
 var config = require('./config/config');
+const logger = require('./controllers/logger');
 
 
 // server started
@@ -43,5 +44,5 @@ const cors = corsMiddleware({
 
 server.listen(config.port,()=>{    
     require('./routes')(server);
-    console.log(" Mail server started on port: ", config.port);
+    logger.info(" Mail server started on port: " + config.port);
 });

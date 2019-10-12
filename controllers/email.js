@@ -1,16 +1,17 @@
-
 var nodemailer = require('nodemailer');
 var config = require('../config/config');
+const logger = require('./logger');
+
+
 function sendEmail(reqBody, next) {
-    var mailOptions = {}
-    mailOptions = {
+    const mailOptions = {
         from: config.from, // "info@theimcentre.com", // sender address
         to: reqBody.to, // list of receivers
         subject: reqBody.subject, // Subject line
         html: reqBody.body
     };
 
-    var transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
         host: config.host,
         port: config.emailPort,
         secure: true,
@@ -25,12 +26,13 @@ function sendEmail(reqBody, next) {
         }
     });
     
+    logger.info("Sending email to: " + reqBody.to)
     transporter.sendMail(mailOptions, (err, result) => {
         if (err) {
-            
+            logger.error(JSON.stringify(err))
             return next(err);
         }
-        
+        logger.info("Sent mail successfully to: " + reqBody.to)
         return next(null, "sent mail successfully");
     });
 }
